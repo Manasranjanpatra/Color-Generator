@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Generator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+      }
+      .container {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      button {
+        padding: 1.1rem 1.6rem;
+        background-color: #023cf9;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 1.3rem;
+        border: 2px solid rgb(212, 109, 54);
+        color: white;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button id="b1">GENERATE</button>
+      <button id="b2">COPY</button>
+    </div>
+  </body>
+  <script>
+    let body = document.querySelector("body");
+    let b1 = document.querySelector("#b1");
+    let b2 = document.querySelector("#b2");
+
+
+      b2.addEventListener("click", () => {
+       let copieditem= body.getAttribute("b-color")||("black");
+       navigator.clipboard.writeText(copieditem);
+       alert(`${copieditem} was copied to clipboard`);
+       
+      });
+ 
+
+    b1.addEventListener("click", () => {
+      let num = Math.random().toString(16).slice(2, 8);
+      console.log(num);
+      body.style.background = `#${num}`;
+     
+      body.setAttribute("b-color",num);
+    });
+  </script>
+</html>
